@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="146" viewBox="0 0 1000 146" role="img">
+  <title>About Me</title>
+  <rect width="1000" height="146" rx="12" fill="#0d1117" />
+  <g transform="translate(20.0, 18.0) scale(0.8333)"><path d="M7.5 11.5V6a1.5 1.5 0 0 1 3 0v4.5M10.5 10V4.5a1.5 1.5 0 0 1 3 0V10M13.5 10V5.5a1.5 1.5 0 0 1 3 0v6.5M16.5 10.5a1.5 1.5 0 0 1 3 0V14a6.5 6.5 0 0 1-13 0v-3.5a1.5 1.5 0 0 1 3 0" fill="#f2c94c" opacity="0.65" stroke="#f2c94c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 5.5c1-1.2 2.2-1.8 3.5-2M19.5 4.5c1 .8 1.8 1.9 2.2 3.2" fill="none" stroke="#f2c94c" stroke-width="1.8" stroke-linecap="round"/></g>
+  <text x="48.0" y="34.0" fill="#f0f6fc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17.5" font-weight="700">About Me</text>
+  <text x="20.0" y="66.0" fill="#c9d1d9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="13.5">I&#x27;m an AI Engineer with a background in Mathematics and</text>
+  <text x="20.0" y="88.0" fill="#c9d1d9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="13.5">Informatics, interested in building scalable and production-ready</text>
+  <text x="20.0" y="110.0" fill="#c9d1d9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="13.5">AI systems.</text>
+  <line x1="586" y1="18" x2="586" y2="128" stroke="#263244" stroke-width="1" />
+  <g transform="translate(606.0, 24.0) scale(0.6667)"><path d="M12 4L2 9l10 5 10-5-10-5z" fill="#58a6ff" opacity="0.55" stroke="#58a6ff" stroke-width="1.8" stroke-linejoin="round"/><path d="M6 11.5v4.5c0 1.8 2.7 3.2 6 3.2s6-1.4 6-3.2v-4.5M21 10v5" fill="none" stroke="#58a6ff" stroke-width="1.8" stroke-linecap="round"/></g>
+  <text x="630.0" y="37.0" fill="#c9d1d9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="13.0">BSc: Mathematics &amp; Informatics – HUST</text>
+  <g transform="translate(606.0, 51.0) scale(0.6667)"><path d="M12 4L2 9l10 5 10-5-10-5z" fill="#58a6ff" opacity="0.55" stroke="#58a6ff" stroke-width="1.8" stroke-linejoin="round"/><path d="M6 11.5v4.5c0 1.8 2.7 3.2 6 3.2s6-1.4 6-3.2v-4.5M21 10v5" fill="none" stroke="#58a6ff" stroke-width="1.8" stroke-linecap="round"/></g>
+  <text x="630.0" y="64.0" fill="#c9d1d9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="13.0">MSc: Mathematics &amp; Informatics – HUST (2026–2028)</text>
+  <g transform="translate(606.0, 78.0) scale(0.6667)"><rect x="3" y="7" width="18" height="13" rx="2.5" fill="#d29922" opacity="0.5" stroke="#d29922" stroke-width="1.8"/><path d="M8.5 7V5a1.5 1.5 0 0 1 1.5-1.5h4A1.5 1.5 0 0 1 15.5 5v2M3 12h18" fill="none" stroke="#d29922" stroke-width="1.8" stroke-linecap="round"/></g>
+  <text x="630.0" y="91.0" fill="#c9d1d9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="13.0">Focus: AI Engineering, MLOps, RAG, Agentic AI</text>
+  <g transform="translate(606.0, 105.0) scale(0.6667)"><circle cx="12" cy="12" r="8.5" fill="#f85149" opacity="0.18" stroke="#f85149" stroke-width="1.9"/><circle cx="12" cy="12" r="4.5" fill="none" stroke="#f85149" stroke-width="1.9"/><circle cx="12" cy="12" r="2.0" fill="#f85149"/></g>
+  <text x="630.0" y="118.0" fill="#c9d1d9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="13.0">Goal: Design and maintain reliable AI systems</text>
+</svg>
