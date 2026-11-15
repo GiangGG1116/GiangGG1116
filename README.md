@@ -35,9 +35,9 @@
 
 <p>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/svg/tech-exploring-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="assets/svg/tech-exploring-light.svg" />
-    <img src="assets/svg/tech-exploring-light.svg" width="100%" alt="Tech Stack and Currently Exploring" />
+    <source media="(prefers-color-scheme: dark)" srcset="assets/svg/tech-stack-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="assets/svg/tech-stack-light.svg" />
+    <img src="assets/svg/tech-stack-light.svg" width="100%" alt="Tech Stack" />
   </picture>
 </p>
 

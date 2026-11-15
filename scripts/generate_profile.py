@@ -43,7 +43,6 @@ THEMES = {
         "wave_color": "#facc15",
         "brain_color": "#f472b6",
         "star_color": "#facc15",
-        "rocket_body": "#e2e8f0",
     },
     "light": {
         "card_bg": "#f6f8fa",
@@ -72,7 +71,6 @@ THEMES = {
         "wave_color": "#eab308",
         "brain_color": "#db2777",
         "star_color": "#eab308",
-        "rocket_body": "#475569",
     },
 }
 
@@ -239,14 +237,6 @@ def draw_icon(name: str, x: float, y: float, size: float, theme: dict[str, str])
             f'<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94'
             f'l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" '
             f'fill="{accent}" fill-opacity="0.25" stroke="{accent}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>'
-        ),
-        "rocket": (
-            f'<path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" '
-            f'fill="#f97316"/>'
-            f'<path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" '
-            f'fill="{theme["rocket_body"]}" stroke="#94a3b8" stroke-width="1.4" stroke-linejoin="round"/>'
-            f'<path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" '
-            f'fill="none" stroke="#ef4444" stroke-width="1.6" stroke-linecap="round"/>'
         ),
     }
     inner = paths.get(name, f'<circle cx="12" cy="12" r="6" fill="{accent}"/>')
@@ -459,99 +449,121 @@ def render_experience_projects(cfg: dict, theme: dict[str, str]) -> str:
         svg_text(960, 25, proj["view_all"], size=13.0, color=theme["accent_link"], weight="600", anchor="end")
     )
 
-    p_gap = 12
-    p_w = 158
+    proj_items = proj.get("items", [])
+    n_proj = max(len(proj_items), 1)
+    p_gap = 14 if n_proj == 2 else 12
+    p_w = (width - proj_x - p_gap * (n_proj - 1)) / n_proj
     p_y = 44
     p_h = 212
-    for idx, p in enumerate(proj["items"]):
+    inner_pad = 15 if p_w >= 200 else 12
+    title_size = 13.5 if p_w >= 200 else 13.0
+    desc_size = 12.0 if p_w >= 200 else 11.5
+    desc_step = 17 if p_w >= 200 else 15
+
+    for idx, p in enumerate(proj_items):
         cx = proj_x + idx * (p_w + p_gap)
         parts.append(
-            f'  <rect x="{cx}" y="{p_y}" width="{p_w}" height="{p_h}" rx="10" '
+            f'  <rect x="{cx:.1f}" y="{p_y}" width="{p_w:.1f}" height="{p_h}" rx="10" '
             f'fill="{theme["card_bg"]}" stroke="{theme["card_border"]}" stroke-width="1" />'
         )
         # Centered icon badge
         parts.append(
-            f'  <rect x="{cx + (p_w - 40) / 2:.1f}" y="{p_y + 14}" width="40" height="40" rx="10" '
+            f'  <rect x="{cx + (p_w - 40) / 2:.1f}" y="{p_y + 15}" width="40" height="40" rx="10" '
             f'fill="{theme["icon_box_bg"]}" stroke="{theme["icon_box_border"]}" stroke-width="1" />'
         )
-        parts.append(draw_icon(p["icon"], cx + (p_w - 22) / 2, p_y + 23, 22, theme))
+        parts.append(draw_icon(p["icon"], cx + (p_w - 22) / 2, p_y + 24, 22, theme))
 
-        t_lines = wrap_lines(p["title"], max_width=p_w - 22, font_size=13.0)
+        t_lines = wrap_lines(p["title"], max_width=p_w - 2 * inner_pad, font_size=title_size)
         for l_idx, line in enumerate(t_lines[:2]):
             parts.append(
-                svg_text(cx + 12, p_y + 76 + l_idx * 17, line, size=13.0, color=theme["text_primary"], weight="700")
+                svg_text(cx + inner_pad, p_y + 78 + l_idx * 17, line, size=title_size, color=theme["text_primary"], weight="700")
             )
 
-        desc_y = p_y + 76 + len(t_lines[:2]) * 17 + 4
-        d_lines = wrap_lines(p["description"], max_width=p_w - 22, font_size=11.5)
+        desc_y = p_y + 78 + len(t_lines[:2]) * 18 + 4
+        d_lines = wrap_lines(p["description"], max_width=p_w - 2 * inner_pad, font_size=desc_size)
         for l_idx, line in enumerate(d_lines[:3]):
             parts.append(
-                svg_text(cx + 12, desc_y + l_idx * 15, line, size=11.5, color=theme["text_muted"])
+                svg_text(cx + inner_pad, desc_y + l_idx * desc_step, line, size=desc_size, color=theme["text_muted"])
             )
 
-        # Single-row tags at bottom
-        tx = float(cx + 10)
-        ty = float(p_y + p_h - 28)
-        for tag in p.get("tags", []):
+        # Tags near bottom with automatic wrap guard
+        tag_pad_x = 12 if p_w >= 200 else 10
+        tx = float(cx + tag_pad_x)
+        max_tx = float(cx + p_w - tag_pad_x)
+        tags = p.get("tags", [])
+        tag_rows: list[list[tuple[float, dict, bool, float]]] = [[]]
+        row_x = tx
+        for tag in tags:
             has_dot = bool(tag.get("dot"))
-            label = tag["label"]
-            tw = est_width(label, 9.8) + (20 if has_dot else 13)
-            parts.append(
-                f'  <rect x="{tx:.1f}" y="{ty:.1f}" width="{tw:.1f}" height="18" rx="9" '
-                f'fill="{theme["pill_bg"]}" stroke="{theme["pill_border"]}" stroke-width="1" />'
-            )
-            if has_dot:
+            tw = est_width(tag["label"], 9.8) + (18 if has_dot else 12)
+            if row_x > tx and row_x + tw > max_tx:
+                tag_rows.append([])
+                row_x = tx
+            tag_rows[-1].append((row_x, tag, has_dot, tw))
+            row_x += tw + 4.5
+
+        base_ty = float(p_y + p_h - 30 - (len(tag_rows) - 1) * 22)
+        for r_idx, row in enumerate(tag_rows):
+            ty = base_ty + r_idx * 22
+            for tag_x, tag, has_dot, tw in row:
+                label = tag["label"]
                 parts.append(
-                    f'  <circle cx="{tx + 8:.1f}" cy="{ty + 9:.1f}" r="3" fill="{tag.get("color", theme["accent_cyan"])}" />'
+                    f'  <rect x="{tag_x:.1f}" y="{ty:.1f}" width="{tw:.1f}" height="18" rx="9" '
+                    f'fill="{theme["pill_bg"]}" stroke="{theme["pill_border"]}" stroke-width="1" />'
                 )
-                parts.append(svg_text(tx + 14.5, ty + 12.2, label, size=9.8, color=theme["pill_text"], weight="500"))
-            else:
-                parts.append(svg_text(tx + tw / 2, ty + 12.2, label, size=9.8, color=theme["pill_text"], weight="500", anchor="middle"))
-            tx += tw + 4.5
+                if has_dot:
+                    parts.append(
+                        f'  <circle cx="{tag_x + 7.5:.1f}" cy="{ty + 9:.1f}" r="3" fill="{tag.get("color", theme["accent_cyan"])}" />'
+                    )
+                    parts.append(svg_text(tag_x + 13.5, ty + 12.2, label, size=9.8, color=theme["pill_text"], weight="500"))
+                else:
+                    parts.append(svg_text(tag_x + tw / 2, ty + 12.2, label, size=9.8, color=theme["pill_text"], weight="500", anchor="middle"))
 
     return svg_doc(width, height, "\n".join(parts), title="Professional Experience & Featured Projects")
 
 
-def render_tech_exploring(cfg: dict, theme: dict[str, str]) -> str:
-    """Render Tech Stack pills card (left) & Currently Exploring card (right)."""
-    width, height = 960, 146
+def render_tech_stack(cfg: dict, theme: dict[str, str]) -> str:
+    """Render full-width Tech Stack pills card."""
+    width = 960
     tech = cfg["tech_stack"]
-    exp = cfg["exploring"]
+
+    font_size = 13.0
+    pill_h = 30.0
+    pill_gap_x = 10.0
+    row_step = 40.0
+    start_x = 18.0
+    start_y = 54.0
+    max_x = 942.0
+
+    placed_pills: list[tuple[float, float, float, dict]] = []
+    px = start_x
+    py = start_y
+    for item in tech["items"]:
+        pw = est_width(item["name"], font_size) + 44.0
+        if px > start_x and px + pw > max_x:
+            px = start_x
+            py += row_step
+        placed_pills.append((px, py, pw, item))
+        px += pw + pill_gap_x
+
+    last_y = placed_pills[-1][1] if placed_pills else start_y
+    card_h = int(round((last_y + pill_h + 18.0) - 4.0))
+    height = card_h + 10
 
     parts = [
-        f'  <rect x="0" y="4" width="602" height="136" rx="10" fill="{theme["card_bg"]}" stroke="{theme["card_border"]}" stroke-width="1" />',
+        f'  <rect x="0" y="4" width="{width}" height="{card_h}" rx="10" fill="{theme["card_bg"]}" stroke="{theme["card_border"]}" stroke-width="1" />',
         section_header(18, 36, "wrench", tech["title"], theme),
     ]
 
-    px = 18.0
-    py = 54.0
-    max_x = 584.0
-    for item in tech["items"]:
-        pw = est_width(item["name"], 11.5) + 32
-        if px + pw > max_x:
-            px = 18.0
-            py += 34.0
+    for pill_x, pill_y, pw, item in placed_pills:
         parts.append(
-            f'  <rect x="{px:.1f}" y="{py:.1f}" width="{pw:.1f}" height="26" rx="6" '
+            f'  <rect x="{pill_x:.1f}" y="{pill_y:.1f}" width="{pw:.1f}" height="{pill_h:.0f}" rx="7" '
             f'fill="{theme["pill_bg"]}" stroke="{theme["pill_border"]}" stroke-width="1" />'
         )
-        parts.append(draw_tech_icon(item["icon"], px + 8, py + 6.0, 14.0))
-        parts.append(svg_text(px + 26, py + 17.0, item["name"], size=11.5, color=theme["pill_text"], weight="500"))
-        px += pw + 7.0
+        parts.append(draw_tech_icon(item["icon"], pill_x + 10.0, pill_y + 7.5, 15.0))
+        parts.append(svg_text(pill_x + 31.0, pill_y + 19.5, item["name"], size=font_size, color=theme["pill_text"], weight="500"))
 
-    # Right card: Currently Exploring
-    rx = 620
-    parts.append(
-        f'  <rect x="{rx}" y="4" width="340" height="136" rx="10" fill="{theme["card_bg"]}" stroke="{theme["card_border"]}" stroke-width="1" />'
-    )
-    parts.append(section_header(rx + 18, 36, "rocket", exp["title"], theme))
-
-    for idx, topic in enumerate(exp["items"]):
-        ty = 61 + idx * 21
-        parts.append(f'  <circle cx="{rx + 23}" cy="{ty - 4}" r="3.2" fill="{theme["accent_blue"]}" />')
-        parts.append(svg_text(rx + 36, ty, topic, size=12.8, color=theme["text_secondary"]))
-
-    return svg_doc(width, height, "\n".join(parts), title="Tech Stack & Currently Exploring")
+    return svg_doc(width, height, "\n".join(parts), title=tech["title"])
 
 
 def main() -> None:
@@ -563,7 +575,7 @@ def main() -> None:
         "about-me": lambda theme: render_about_me(cfg, theme),
         "core-expertise": lambda theme: render_core_expertise(cfg, theme),
         "experience-projects": lambda theme: render_experience_projects(cfg, theme),
-        "tech-exploring": lambda theme: render_tech_exploring(cfg, theme),
+        "tech-stack": lambda theme: render_tech_stack(cfg, theme),
     }
 
     for section_name, builder in generators.items():

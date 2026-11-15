@@ -88,32 +88,25 @@
     "view_all": "View all →",
     "items": [
       {
-        "title": "Vietnamese Legal RAG Platform",
-        "icon": "scales",
-        "description": "RAG system for Vietnamese legal documents",
-        "tags": [
-          { "label": "Python", "dot": true, "color": "#38bdf8" },
-          { "label": "Qwen" },
-          { "label": "RAG" }
-        ]
-      },
-      {
-        "title": "MLOps Platform",
-        "icon": "k8s",
-        "description": "Production ML infrastructure with K8s & Airflow",
-        "tags": [
-          { "label": "Docker", "dot": true, "color": "#38bdf8" },
-          { "label": "K8s" },
-          { "label": "MLflow" }
-        ]
-      },
-      {
-        "title": "vCaller",
+        "title": "MLOps Spam Phone Detection",
         "icon": "phone",
-        "description": "Spam phone detection with XGBoost",
+        "description": "End-to-end MLOps pipeline & FastAPI service for real-time spam call detection",
         "tags": [
           { "label": "Python", "dot": true, "color": "#facc15" },
-          { "label": "XGBoost" }
+          { "label": "XGBoost" },
+          { "label": "MLflow" },
+          { "label": "FastAPI" }
+        ]
+      },
+      {
+        "title": "Vietnamese Legal RAG",
+        "icon": "scales",
+        "description": "Citation-grounded RAG system for Vietnamese laws with hybrid retrieval & safety gates",
+        "tags": [
+          { "label": "Python", "dot": true, "color": "#facc15" },
+          { "label": "Hybrid RAG" },
+          { "label": "BM25" },
+          { "label": "SQLite" }
         ]
       }
     ]
@@ -134,15 +127,6 @@
       { "name": "PostgreSQL", "icon": "postgresql" },
       { "name": "Qdrant", "icon": "qdrant" },
       { "name": "MinIO", "icon": "minio" }
-    ]
-  },
-  "exploring": {
-    "title": "Currently Exploring",
-    "items": [
-      "Production LLM Systems",
-      "Agentic AI & Multi-Agent",
-      "MLOps Architecture",
-      "Go & Rust"
     ]
   }
 }

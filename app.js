@@ -329,6 +329,16 @@
       )
       .join("");
 
+    const exploringSectionHtml = exploringHtml
+      ? `
+      <section class="exploring-block">
+        <h2 class="sidebar-section-title">${UI_ICONS.rocket}<span>${escapeHtml(
+          sidebar.exploringTitle || "Currently Exploring"
+        )}</span></h2>
+        <ul class="exploring-list">${exploringHtml}</ul>
+      </section>`
+      : "";
+
     el.innerHTML = `
       <div class="avatar-wrapper">
         <div class="avatar-frame">${avatarInner}</div>
@@ -360,14 +370,7 @@
       sidebar.techStackTitle || "Tech Stack"
     )}</span></h2>
         <div class="tech-pills">${techHtml}</div>
-      </section>
-
-      <section class="exploring-block">
-        <h2 class="sidebar-section-title">${UI_ICONS.rocket}<span>${escapeHtml(
-      sidebar.exploringTitle || "Currently Exploring"
-    )}</span></h2>
-        <ul class="exploring-list">${exploringHtml}</ul>
-      </section>
+      </section>${exploringSectionHtml}
     `;
   }
 

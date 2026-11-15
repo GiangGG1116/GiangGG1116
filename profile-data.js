@@ -74,15 +74,6 @@ window.PROFILE_DATA = {
       { name: "Qdrant", icon: "qdrant" },
       { name: "MinIO", icon: "minio" },
     ],
-
-    // Mục Currently Exploring ở cuối sidebar trái
-    exploringTitle: "Currently Exploring",
-    exploring: [
-      "Production LLM Systems",
-      "Agentic AI & Multi-Agent",
-      "MLOps Architecture",
-      "Go & Rust",
-    ],
   },
 
   // --------------------------------------------------------------------------
@@ -186,7 +177,7 @@ window.PROFILE_DATA = {
   },
 
   // --------------------------------------------------------------------------
-  // 6. FEATURED PROJECTS (3 thẻ bên phải)
+  // 6. FEATURED PROJECTS (2 thẻ bên phải)
   // --------------------------------------------------------------------------
   projects: {
     title: "Featured Projects",
@@ -195,35 +186,27 @@ window.PROFILE_DATA = {
     // icon hỗ trợ: "scales", "k8s", "phone", "code", "bot", "layers"
     items: [
       {
-        title: "Vietnamese Legal RAG Platform",
-        icon: "scales",
-        description: "RAG system for Vietnamese legal documents",
-        url: "https://github.com/GiangGG1116?tab=repositories",
-        tags: [
-          { label: "Python", dotColor: "#38bdf8" },
-          { label: "Qwen" },
-          { label: "RAG" },
-        ],
-      },
-      {
-        title: "MLOps Platform",
-        icon: "k8s",
-        description: "Production ML infrastructure with K8s & Airflow",
-        url: "https://github.com/GiangGG1116?tab=repositories",
-        tags: [
-          { label: "Docker", dotColor: "#38bdf8" },
-          { label: "K8s" },
-          { label: "MLflow" },
-        ],
-      },
-      {
-        title: "vCaller",
+        title: "MLOps Spam Phone Detection",
         icon: "phone",
-        description: "Spam phone detection with XGBoost",
-        url: "https://github.com/GiangGG1116?tab=repositories",
+        description: "End-to-end MLOps pipeline & FastAPI service for real-time spam call detection",
+        url: "https://github.com/GiangGG1116/mlops_detection_spam_phone",
         tags: [
           { label: "Python", dotColor: "#facc15" },
           { label: "XGBoost" },
+          { label: "MLflow" },
+          { label: "FastAPI" },
+        ],
+      },
+      {
+        title: "Vietnamese Legal RAG",
+        icon: "scales",
+        description: "Citation-grounded RAG system for Vietnamese laws with hybrid retrieval & safety gates",
+        url: "https://github.com/GiangGG1116/VN-legal-rag",
+        tags: [
+          { label: "Python", dotColor: "#facc15" },
+          { label: "Hybrid RAG" },
+          { label: "BM25" },
+          { label: "SQLite" },
         ],
       },
     ],
