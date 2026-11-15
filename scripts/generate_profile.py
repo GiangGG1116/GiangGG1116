@@ -254,51 +254,60 @@ def draw_tech_icon(name: str, x: float, y: float, size: float = 14.0) -> str:
             's-2.2-.1-2.2 2.2v2.6S6 21 12 21zm1.6-1.3a.7.7 0 1 1 0-1.4.7.7 0 0 1 0 1.4z" fill="#eab308"/>'
         ),
         "go": (
-            '<circle cx="12" cy="12" r="9" fill="#00add8" fill-opacity="0.2" stroke="#00add8" stroke-width="1.8"/>'
-            '<text x="12" y="15.2" text-anchor="middle" fill="#0284c7" font-size="9" font-weight="800" font-family="sans-serif">GO</text>'
+            '<circle cx="12" cy="12" r="9.2" fill="#00add8" fill-opacity="0.18" stroke="#00add8" stroke-width="1.8"/>'
+            '<text x="12" y="15.3" text-anchor="middle" fill="#0ea5e9" font-size="8.8" font-weight="800" font-family="sans-serif">Go</text>'
         ),
         "rust": (
-            '<circle cx="12" cy="12" r="7" fill="none" stroke="#ea580c" stroke-width="2.2" stroke-dasharray="3 2"/>'
-            '<circle cx="12" cy="12" r="3" fill="#ea580c"/>'
+            '<circle cx="12" cy="12" r="7.5" fill="none" stroke="#ea580c" stroke-width="2.6" stroke-dasharray="2.6 2.1"/>'
+            '<circle cx="12" cy="12" r="5.2" fill="none" stroke="#ea580c" stroke-width="1.5"/>'
+            '<text x="12" y="14.6" text-anchor="middle" fill="#ea580c" font-size="7.8" font-weight="800" font-family="sans-serif">R</text>'
         ),
         "pytorch": (
-            '<path d="M15.8 7.2a5.8 5.8 0 1 1-7.6 0l1.6 1.6a3.6 3.6 0 1 0 4.4 0l1.6-1.6z" fill="#ee4c2c"/>'
-            '<circle cx="14.5" cy="5.5" r="1.4" fill="#ee4c2c"/>'
+            '<path d="M16.2 7.2a6 6 0 1 1-8.4 0l1.6 1.6a3.8 3.8 0 1 0 5.2 0l1.6-1.6z" fill="#ee4c2c"/>'
+            '<circle cx="14.8" cy="5.4" r="1.5" fill="#ee4c2c"/>'
         ),
         "docker": (
-            '<path d="M4 13h16c0 4-3 7-8 7s-8-3-8-7z" fill="#2496ed"/>'
-            '<path d="M7 9h2v3H7zm3 0h2v3h-2zm3 0h2v3h-2zm-3-3h2v2.5h-2z" fill="#60a5fa"/>'
+            '<path d="M3.5 13h17c0 4.2-3.2 7.2-8.5 7.2S3.5 17.2 3.5 13z" fill="#2496ed"/>'
+            '<rect x="6.5" y="9.2" width="2.4" height="2.4" rx="0.4" fill="#38bdf8"/>'
+            '<rect x="9.8" y="9.2" width="2.4" height="2.4" rx="0.4" fill="#38bdf8"/>'
+            '<rect x="13.1" y="9.2" width="2.4" height="2.4" rx="0.4" fill="#38bdf8"/>'
+            '<rect x="9.8" y="5.9" width="2.4" height="2.4" rx="0.4" fill="#0ea5e9"/>'
         ),
         "kubernetes": (
-            '<polygon points="12,3 19.8,7.2 21.5,15.5 16,21 8,21 2.5,15.5 4.2,7.2" fill="#326ce5" fill-opacity="0.25" stroke="#326ce5" stroke-width="1.7"/>'
-            '<circle cx="12" cy="12" r="2.6" fill="none" stroke="#326ce5" stroke-width="1.7"/>'
+            '<polygon points="12,3 19.8,7.2 21.5,15.5 16,21 8,21 2.5,15.5 4.2,7.2" fill="#326ce5" fill-opacity="0.22" stroke="#326ce5" stroke-width="1.7"/>'
+            '<circle cx="12" cy="12" r="3" fill="none" stroke="#326ce5" stroke-width="1.6"/>'
+            '<path d="M12 4.5V9M12 15v4.5M5.5 9l4 2M14.5 13l4 2M18.5 9l-4 2M9.5 13l-4 2" stroke="#326ce5" stroke-width="1.4" stroke-linecap="round"/>'
         ),
         "airflow": (
-            '<path d="M12 12c0-4 3-7 7-7-1 4-3 7-7 7zm0 0c4 0 7 3 7 7-4-1-7-3-7-7zm0 0c0 4-3 7-7 7 1-4 3-7 7-7zm0 0c-4 0-7-3-7-7 4 1 7 3 7 7z" fill="#06b6d4"/>'
+            '<path d="M12 12c0-4.2 3-7.2 7.2-7.2-1 4.2-3 7.2-7.2 7.2z" fill="#06b6d4"/>'
+            '<path d="M12 12c4.2 0 7.2 3 7.2 7.2-4.2-1-7.2-3-7.2-7.2z" fill="#0ea5e9"/>'
+            '<path d="M12 12c0 4.2-3 7.2-7.2 7.2 1-4.2 3-7.2 7.2-7.2z" fill="#06b6d4"/>'
+            '<path d="M12 12c-4.2 0-7.2-3-7.2-7.2 4.2 1 7.2 3 7.2 7.2z" fill="#0ea5e9"/>'
+            '<circle cx="12" cy="12" r="1.4" fill="#ffffff"/>'
         ),
         "mlflow": (
-            '<rect x="3" y="4" width="18" height="16" rx="4" fill="#0194e2" fill-opacity="0.22" stroke="#0194e2" stroke-width="1.7"/>'
-            '<path d="M7.5 15V9l4.5 4.2L16.5 9v6" fill="none" stroke="#0194e2" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>'
+            '<rect x="3" y="4" width="18" height="16" rx="4.5" fill="#0194e2" fill-opacity="0.2" stroke="#0194e2" stroke-width="1.7"/>'
+            '<path d="M7.2 15.2V9.2l4.8 4.4 4.8-4.4v6" fill="none" stroke="#0194e2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
         ),
         "kserve": (
-            '<circle cx="12" cy="12" r="8.5" fill="#0ea5e9" fill-opacity="0.2" stroke="#0ea5e9" stroke-width="1.7"/>'
-            '<path d="M9.5 7.5v9M15 7.5 10.5 12 15 16.5" fill="none" stroke="#0ea5e9" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>'
+            '<circle cx="12" cy="12" r="8.8" fill="#0ea5e9" fill-opacity="0.18" stroke="#0ea5e9" stroke-width="1.7"/>'
+            '<path d="M9.2 7.5v9M15 7.5 10.2 12 15 16.5" fill="none" stroke="#0ea5e9" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>'
         ),
         "fastapi": (
-            '<circle cx="12" cy="12" r="9" fill="#009688"/>'
-            '<path d="M13 6.5 8.5 13h3.2L11 17.5l4.8-6.5h-3.2L13 6.5z" fill="#ffffff"/>'
+            '<circle cx="12" cy="12" r="9.2" fill="#009688"/>'
+            '<path d="M13 6.2 8.2 13h3.3l-.7 4.8 5-6.8h-3.3L13 6.2z" fill="#ffffff"/>'
         ),
         "postgresql": (
-            '<ellipse cx="12" cy="10" rx="6.5" ry="6" fill="#336791" fill-opacity="0.32" stroke="#336791" stroke-width="1.8"/>'
-            '<path d="M9 14v5M15 14v5" stroke="#336791" stroke-width="1.8" stroke-linecap="round"/>'
+            '<path d="M7 9.5C7 6.2 9.4 4.2 12.2 4.2c2.9 0 4.8 2 4.8 5.1 0 2-.7 3.6-1.6 4.7-.5.6-.7 1.3-.7 2.2v1.6c0 1.2-.8 2-1.9 2-1 0-1.6-.7-1.6-1.7v-2.1c-2.5-.4-4.2-2.7-4.2-6.5z" fill="#336791" fill-opacity="0.26" stroke="#336791" stroke-width="1.7" stroke-linejoin="round"/>'
+            '<circle cx="10.5" cy="9.2" r="1" fill="#336791"/>'
         ),
         "qdrant": (
-            '<polygon points="12,3 20,7.5 20,16.5 12,21 4,16.5 4,7.5" fill="#dc244c" fill-opacity="0.22" stroke="#e11d48" stroke-width="1.8"/>'
-            '<circle cx="12" cy="12" r="3" fill="#e11d48"/>'
+            '<polygon points="12,3 20,7.5 20,16.5 12,21 4,16.5 4,7.5" fill="#e11d48" fill-opacity="0.2" stroke="#e11d48" stroke-width="1.8"/>'
+            '<circle cx="12" cy="12" r="3.2" fill="#e11d48"/>'
         ),
         "minio": (
-            '<circle cx="12" cy="12" r="8.5" fill="#f43f5e" fill-opacity="0.2" stroke="#f43f5e" stroke-width="1.8"/>'
-            '<path d="M7.5 15V9.5l4.5 4 4.5-4V15" fill="none" stroke="#f43f5e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>'
+            '<circle cx="12" cy="12" r="8.8" fill="#f43f5e" fill-opacity="0.18" stroke="#f43f5e" stroke-width="1.7"/>'
+            '<path d="M7.4 15.2V9.2l4.6 4.2 4.6-4.2v6" fill="none" stroke="#f43f5e" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>'
         ),
     }
     inner = icons.get(name.lower(), '<circle cx="12" cy="12" r="5" fill="#38bdf8"/>')
@@ -523,45 +532,73 @@ def render_experience_projects(cfg: dict, theme: dict[str, str]) -> str:
 
 
 def render_tech_stack(cfg: dict, theme: dict[str, str]) -> str:
-    """Render full-width Tech Stack pills card."""
+    """Render categorized Tech Stack matrix card with balanced icon pills."""
     width = 960
     tech = cfg["tech_stack"]
+    groups = tech.get("groups") or [{"label": "Core Stack", "icon": "wrench", "items": tech.get("items", [])}]
 
-    font_size = 13.0
-    pill_h = 30.0
-    pill_gap_x = 10.0
-    row_step = 40.0
-    start_x = 18.0
-    start_y = 54.0
+    card_y = 44.0
+    start_x = 232.0
     max_x = 942.0
+    divider_x = 212.0
+    font_size = 13.0
+    pill_h = 32.0
+    pill_gap_x = 10.0
+    pill_row_step = 40.0
+    row_pad_y = 14.0
 
-    placed_pills: list[tuple[float, float, float, dict]] = []
-    px = start_x
-    py = start_y
-    for item in tech["items"]:
-        pw = est_width(item["name"], font_size) + 44.0
-        if px > start_x and px + pw > max_x:
-            px = start_x
-            py += row_step
-        placed_pills.append((px, py, pw, item))
-        px += pw + pill_gap_x
+    # First pass: compute wrapped pill positions per group to derive dynamic row & card heights
+    row_layouts: list[tuple[dict, float, float, list[tuple[float, float, float, dict]]]] = []
+    cur_y = card_y
+    for group in groups:
+        px = start_x
+        py = cur_y + row_pad_y
+        placed: list[tuple[float, float, float, dict]] = []
+        max_py = py
+        for item in group.get("items", []):
+            pw = est_width(item["name"], font_size) + 48.0
+            if px > start_x and px + pw > max_x:
+                px = start_x
+                py += pill_row_step
+            placed.append((px, py, pw, item))
+            max_py = max(max_py, py)
+            px += pw + pill_gap_x
+        row_h = (max_py - cur_y) + pill_h + row_pad_y
+        row_layouts.append((group, cur_y, row_h, placed))
+        cur_y += row_h
 
-    last_y = placed_pills[-1][1] if placed_pills else start_y
-    card_h = int(round((last_y + pill_h + 18.0) - 4.0))
-    height = card_h + 10
+    card_h = int(round(cur_y - card_y))
+    height = int(round(card_y + card_h + 8.0))
 
     parts = [
-        f'  <rect x="0" y="4" width="{width}" height="{card_h}" rx="10" fill="{theme["card_bg"]}" stroke="{theme["card_border"]}" stroke-width="1" />',
-        section_header(18, 36, "wrench", tech["title"], theme),
+        section_header(0, 26, "wrench", tech["title"], theme),
+        f'  <rect x="0" y="{card_y:.0f}" width="{width}" height="{card_h}" rx="10" fill="{theme["card_bg"]}" stroke="{theme["card_border"]}" stroke-width="1" />',
+        f'  <line x1="{divider_x:.0f}" y1="{card_y + 12:.0f}" x2="{divider_x:.0f}" y2="{card_y + card_h - 12:.0f}" stroke="{theme["card_divider"]}" stroke-width="1" />',
     ]
 
-    for pill_x, pill_y, pw, item in placed_pills:
+    for idx, (group, ry, row_h, placed) in enumerate(row_layouts):
+        if idx > 0:
+            parts.append(
+                f'  <line x1="18" y1="{ry:.1f}" x2="942" y2="{ry:.1f}" stroke="{theme["card_divider"]}" stroke-width="1" />'
+            )
+
+        badge_y = ry + (row_h - 28.0) / 2.0
         parts.append(
-            f'  <rect x="{pill_x:.1f}" y="{pill_y:.1f}" width="{pw:.1f}" height="{pill_h:.0f}" rx="7" '
-            f'fill="{theme["pill_bg"]}" stroke="{theme["pill_border"]}" stroke-width="1" />'
+            f'  <rect x="18" y="{badge_y:.1f}" width="28" height="28" rx="7" '
+            f'fill="{theme["icon_box_bg"]}" stroke="{theme["icon_box_border"]}" stroke-width="1" />'
         )
-        parts.append(draw_tech_icon(item["icon"], pill_x + 10.0, pill_y + 7.5, 15.0))
-        parts.append(svg_text(pill_x + 31.0, pill_y + 19.5, item["name"], size=font_size, color=theme["pill_text"], weight="500"))
+        parts.append(draw_icon(group.get("icon", "wrench"), 24.0, badge_y + 6.0, 16.0, theme))
+        parts.append(
+            svg_text(56.0, ry + row_h / 2.0 + 4.5, group["label"], size=13.2, color=theme["text_primary"], weight="600")
+        )
+
+        for pill_x, pill_y, pw, item in placed:
+            parts.append(
+                f'  <rect x="{pill_x:.1f}" y="{pill_y:.1f}" width="{pw:.1f}" height="{pill_h:.0f}" rx="8" '
+                f'fill="{theme["pill_bg"]}" stroke="{theme["pill_border"]}" stroke-width="1" />'
+            )
+            parts.append(draw_tech_icon(item["icon"], pill_x + 11.0, pill_y + 8.0, 16.0))
+            parts.append(svg_text(pill_x + 33.0, pill_y + 20.5, item["name"], size=font_size, color=theme["pill_text"], weight="500"))
 
     return svg_doc(width, height, "\n".join(parts), title=tech["title"])
 

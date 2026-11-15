@@ -61,8 +61,6 @@ window.PROFILE_DATA = {
     techStackTitle: "Tech Stack",
     techStack: [
       { name: "Python", icon: "python" },
-      { name: "Go", icon: "go" },
-      { name: "Rust", icon: "rust" },
       { name: "PyTorch", icon: "pytorch" },
       { name: "Docker", icon: "docker" },
       { name: "Kubernetes", icon: "kubernetes" },

@@ -113,20 +113,36 @@
   },
   "tech_stack": {
     "title": "Tech Stack",
-    "items": [
-      { "name": "Python", "icon": "python" },
-      { "name": "Go", "icon": "go" },
-      { "name": "Rust", "icon": "rust" },
-      { "name": "PyTorch", "icon": "pytorch" },
-      { "name": "Docker", "icon": "docker" },
-      { "name": "Kubernetes", "icon": "kubernetes" },
-      { "name": "Airflow", "icon": "airflow" },
-      { "name": "MLflow", "icon": "mlflow" },
-      { "name": "KServe", "icon": "kserve" },
-      { "name": "FastAPI", "icon": "fastapi" },
-      { "name": "PostgreSQL", "icon": "postgresql" },
-      { "name": "Qdrant", "icon": "qdrant" },
-      { "name": "MinIO", "icon": "minio" }
+    "groups": [
+      {
+        "label": "Languages & AI",
+        "icon": "cpu",
+        "items": [
+          { "name": "Python", "icon": "python" },
+          { "name": "PyTorch", "icon": "pytorch" }
+        ]
+      },
+      {
+        "label": "MLOps & Infra",
+        "icon": "gear",
+        "items": [
+          { "name": "Docker", "icon": "docker" },
+          { "name": "Kubernetes", "icon": "kubernetes" },
+          { "name": "Airflow", "icon": "airflow" },
+          { "name": "MLflow", "icon": "mlflow" },
+          { "name": "KServe", "icon": "kserve" }
+        ]
+      },
+      {
+        "label": "Backend & Data",
+        "icon": "database",
+        "items": [
+          { "name": "FastAPI", "icon": "fastapi" },
+          { "name": "PostgreSQL", "icon": "postgresql" },
+          { "name": "Qdrant", "icon": "qdrant" },
+          { "name": "MinIO", "icon": "minio" }
+        ]
+      }
     ]
   }
 }
