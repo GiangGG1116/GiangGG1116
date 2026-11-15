@@ -83,34 +83,6 @@
       }
     ]
   },
-  "projects": {
-    "title": "Featured Projects",
-    "view_all": "View all →",
-    "items": [
-      {
-        "title": "MLOps Spam Phone Detection",
-        "icon": "phone",
-        "description": "End-to-end MLOps pipeline & FastAPI service for real-time spam call detection",
-        "tags": [
-          { "label": "Python", "dot": true, "color": "#facc15" },
-          { "label": "XGBoost" },
-          { "label": "MLflow" },
-          { "label": "FastAPI" }
-        ]
-      },
-      {
-        "title": "Vietnamese Legal RAG",
-        "icon": "scales",
-        "description": "Citation-grounded RAG system for Vietnamese laws with hybrid retrieval & safety gates",
-        "tags": [
-          { "label": "Python", "dot": true, "color": "#facc15" },
-          { "label": "Hybrid RAG" },
-          { "label": "BM25" },
-          { "label": "SQLite" }
-        ]
-      }
-    ]
-  },
   "tech_stack": {
     "title": "Tech Stack",
     "groups": [
@@ -140,7 +112,8 @@
           { "name": "FastAPI", "icon": "fastapi" },
           { "name": "PostgreSQL", "icon": "postgresql" },
           { "name": "Qdrant", "icon": "qdrant" },
-          { "name": "MinIO", "icon": "minio" }
+          { "name": "MinIO", "icon": "minio" },
+          { "name": "Spark", "icon": "spark" }
         ]
       }
     ]

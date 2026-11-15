@@ -240,6 +240,11 @@
       "0 0 24 24",
       14
     ),
+    spark: svgWrap(
+      `<path d="m12 2.8 2.1 5.9 6.2.2-4.9 3.8 1.7 6-5.1-3.5-5.1 3.5 1.7-6-4.9-3.8 6.2-.2z" fill="#f97316" fill-opacity="0.26" stroke="#f97316" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="11.5" r="2.1" fill="#f97316"/>`,
+      "0 0 24 24",
+      14
+    ),
     default: svgWrap(
       `<circle cx="12" cy="12" r="5" fill="#38bdf8"/>`,
       "0 0 24 24",
@@ -471,7 +476,8 @@
           )}</a>`
         : "";
 
-    const projCardsHtml = ((projects && projects.items) || [])
+    const projItems = (projects && projects.items) || [];
+    const projCardsHtml = projItems
       .map((proj) => {
         const iconHtml = UI_ICONS[proj.icon] || UI_ICONS.code;
         const projUrl = safeUrl(proj.url);
@@ -503,15 +509,8 @@
       })
       .join("");
 
-    return `
-      <section class="exp-proj-grid">
-        <div>
-          ${renderSectionHeader(
-            UI_ICONS.briefcase,
-            (experience && experience.title) || "Professional Experience"
-          )}
-          <div class="timeline">${expItemsHtml}</div>
-        </div>
+    const projectsBlockHtml = projItems.length
+      ? `
         <div>
           ${renderSectionHeader(
             UI_ICONS.star,
@@ -519,7 +518,18 @@
             viewAllHtml
           )}
           <div class="projects-grid">${projCardsHtml}</div>
-        </div>
+        </div>`
+      : "";
+
+    return `
+      <section class="exp-proj-grid${projItems.length ? "" : " exp-proj-grid--single"}">
+        <div>
+          ${renderSectionHeader(
+            UI_ICONS.briefcase,
+            (experience && experience.title) || "Professional Experience"
+          )}
+          <div class="timeline">${expItemsHtml}</div>
+        </div>${projectsBlockHtml}
       </section>`;
   }
 

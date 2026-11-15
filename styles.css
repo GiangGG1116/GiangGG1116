@@ -501,6 +501,10 @@ a:hover {
   align-items: start;
 }
 
+.exp-proj-grid--single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 /* Timeline */
 .timeline {
   position: relative;

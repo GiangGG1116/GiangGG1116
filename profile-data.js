@@ -71,6 +71,7 @@ window.PROFILE_DATA = {
       { name: "PostgreSQL", icon: "postgresql" },
       { name: "Qdrant", icon: "qdrant" },
       { name: "MinIO", icon: "minio" },
+      { name: "Spark", icon: "spark" },
     ],
   },
 
@@ -175,43 +176,7 @@ window.PROFILE_DATA = {
   },
 
   // --------------------------------------------------------------------------
-  // 6. FEATURED PROJECTS (2 thẻ bên phải)
-  // --------------------------------------------------------------------------
-  projects: {
-    title: "Featured Projects",
-    viewAllLabel: "View all →",
-    viewAllUrl: "https://github.com/GiangGG1116?tab=repositories",
-    // icon hỗ trợ: "scales", "k8s", "phone", "code", "bot", "layers"
-    items: [
-      {
-        title: "MLOps Spam Phone Detection",
-        icon: "phone",
-        description: "End-to-end MLOps pipeline & FastAPI service for real-time spam call detection",
-        url: "https://github.com/GiangGG1116/mlops_detection_spam_phone",
-        tags: [
-          { label: "Python", dotColor: "#facc15" },
-          { label: "XGBoost" },
-          { label: "MLflow" },
-          { label: "FastAPI" },
-        ],
-      },
-      {
-        title: "Vietnamese Legal RAG",
-        icon: "scales",
-        description: "Citation-grounded RAG system for Vietnamese laws with hybrid retrieval & safety gates",
-        url: "https://github.com/GiangGG1116/VN-legal-rag",
-        tags: [
-          { label: "Python", dotColor: "#facc15" },
-          { label: "Hybrid RAG" },
-          { label: "BM25" },
-          { label: "SQLite" },
-        ],
-      },
-    ],
-  },
-
-  // --------------------------------------------------------------------------
-  // 7. GITHUB STATS & TOP LANGUAGES
+  // 6. GITHUB STATS & TOP LANGUAGES
   // --------------------------------------------------------------------------
   stats: {
     title: "GitHub Stats",

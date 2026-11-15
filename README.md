@@ -24,20 +24,10 @@
 </p>
 
 <p>
-  <a href="https://github.com/GiangGG1116?tab=repositories">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="assets/svg/experience-projects-dark.svg" />
-      <source media="(prefers-color-scheme: light)" srcset="assets/svg/experience-projects-light.svg" />
-      <img src="assets/svg/experience-projects-light.svg" width="100%" alt="Professional Experience and Featured Projects" />
-    </picture>
-  </a>
-</p>
-
-<p>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/svg/tech-stack-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="assets/svg/tech-stack-light.svg" />
-    <img src="assets/svg/tech-stack-light.svg" width="100%" alt="Tech Stack" />
+    <source media="(prefers-color-scheme: dark)" srcset="assets/svg/experience-stack-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="assets/svg/experience-stack-light.svg" />
+    <img src="assets/svg/experience-stack-light.svg" width="100%" alt="Professional Experience and Tech Stack" />
   </picture>
 </p>
 
