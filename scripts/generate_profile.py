@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import json
-import math
 from html import escape
 from pathlib import Path
 
@@ -38,10 +37,6 @@ THEMES = {
         "check_green": "#3fb950",
         "timeline_ring": "#132c52",
         "timeline_line": "#25416b",
-        "donut_track": "#1a2538",
-        "heatmap": ["#161f2e", "#0e4429", "#006d32", "#26a641", "#39d353"],
-        "mountain_back": "#1a273b",
-        "mountain_front": "#131e2f",
         "grad_color": "#60a5fa",
         "brief_color": "#f59e0b",
         "target_color": "#f85149",
@@ -71,10 +66,6 @@ THEMES = {
         "check_green": "#1a7f37",
         "timeline_ring": "#ddf4ff",
         "timeline_line": "#9cd1ff",
-        "donut_track": "#eaeef2",
-        "heatmap": ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"],
-        "mountain_back": "#dbe7f3",
-        "mountain_front": "#eaf1f8",
         "grad_color": "#0969da",
         "brief_color": "#bf8700",
         "target_color": "#cf222e",
@@ -257,11 +248,6 @@ def draw_icon(name: str, x: float, y: float, size: float, theme: dict[str, str])
             f'<path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" '
             f'fill="none" stroke="#ef4444" stroke-width="1.6" stroke-linecap="round"/>'
         ),
-        "chart": (
-            f'<rect x="3" y="13" width="4" height="8" rx="1" fill="{accent}"/>'
-            f'<rect x="10" y="7" width="4" height="14" rx="1" fill="{theme["check_green"]}"/>'
-            f'<rect x="17" y="10" width="4" height="11" rx="1" fill="#8b5cf6"/>'
-        ),
     }
     inner = paths.get(name, f'<circle cx="12" cy="12" r="6" fill="{accent}"/>')
     return f'  <g transform="translate({x:.1f}, {y:.1f}) scale({scale:.4f})">{inner}</g>'
@@ -423,14 +409,24 @@ def render_experience_projects(cfg: dict, theme: dict[str, str]) -> str:
 
     # Timeline on left (x=0..438)
     tl_x = 9
-    y_starts = [62, 128, 194]
-    parts.append(
-        f'  <line x1="{tl_x}" y1="{y_starts[0]}" x2="{tl_x}" y2="{y_starts[-1]}" '
-        f'stroke="{theme["timeline_line"]}" stroke-width="2" />'
-    )
+    exp_items = exp.get("items", [])
+    n_items = len(exp_items)
+    if n_items <= 1:
+        y_starts = [80]
+    elif n_items == 2:
+        y_starts = [78, 162]
+    else:
+        step = 132.0 / (n_items - 1)
+        y_starts = [62.0 + i * step for i in range(n_items)]
+
+    if n_items >= 2:
+        parts.append(
+            f'  <line x1="{tl_x}" y1="{y_starts[0]:.1f}" x2="{tl_x}" y2="{y_starts[-1]:.1f}" '
+            f'stroke="{theme["timeline_line"]}" stroke-width="2" />'
+        )
 
     left_edge = 436
-    for idx, item in enumerate(exp["items"]):
+    for idx, item in enumerate(exp_items):
         iy = y_starts[idx]
         parts.append(f'  <circle cx="{tl_x}" cy="{iy}" r="7.5" fill="{theme["timeline_ring"]}" />')
         parts.append(f'  <circle cx="{tl_x}" cy="{iy}" r="4.2" fill="{theme["accent_blue"]}" />')
@@ -558,153 +554,22 @@ def render_tech_exploring(cfg: dict, theme: dict[str, str]) -> str:
     return svg_doc(width, height, "\n".join(parts), title="Tech Stack & Currently Exploring")
 
 
-def render_github_stats(cfg: dict, theme_name: str, theme: dict[str, str]) -> str:
-    """Render GitHub Stats heatmap card, Top Languages donut card, and Quote panel."""
-    width, height = 960, 214
-    stats = cfg["stats"]
-    quote = cfg["quote"]
-
-    parts = [section_header(0, 26, "chart", stats["title"], theme)]
-
-    # 1. Contributions card (x=0..508, y=44..204)
-    c_y, c_h = 44, 160
-    parts.append(
-        f'  <rect x="0" y="{c_y}" width="508" height="{c_h}" rx="10" '
-        f'fill="{theme["card_bg"]}" stroke="{theme["card_border"]}" stroke-width="1" />'
-    )
-    parts.append(svg_text(20, c_y + 38, "Total Contributions", size=12.0, color=theme["text_secondary"], weight="500"))
-    parts.append(svg_text(20, c_y + 82, str(stats["total_contributions"]), size=36.0, color=theme["text_primary"], weight="800"))
-    parts.append(svg_text(20, c_y + 104, stats["period_label"], size=11.5, color=theme["text_muted"]))
-
-    # Month labels + 5x23 heatmap grid
-    grid_x = 152
-    cols = 23
-    rows = 5
-    cell = 11.5
-    gap = 3.0
-    step = cell + gap
-    months = stats["months"]
-    for idx, month in enumerate(months):
-        mx = grid_x + idx * ((cols * step - gap) / len(months)) + 4
-        parts.append(svg_text(mx, c_y + 34, month, size=9.8, color=theme["text_muted"]))
-
-    seed = int(stats["total_contributions"]) or 233
-    for r in range(rows):
-        for c in range(cols):
-            seed = (seed * 1664525 + 1013904223) & 0xFFFFFFFF
-            rand_v = seed / 4294967296.0
-            wave = 0.25 + 0.45 * (math.sin(c * 0.48 + r * 0.6) ** 2)
-            score = rand_v * 0.75 + wave * 0.45
-            if score > 0.98:
-                lvl = 4
-            elif score > 0.78:
-                lvl = 3
-            elif score > 0.56:
-                lvl = 2
-            elif score > 0.36:
-                lvl = 1
-            else:
-                lvl = 0
-            cx = grid_x + c * step
-            cy = c_y + 46 + r * step
-            parts.append(
-                f'  <rect x="{cx:.1f}" y="{cy:.1f}" width="{cell}" height="{cell}" rx="2.5" '
-                f'fill="{theme["heatmap"][lvl]}" />'
-            )
-
-    # Less ... More legend
-    leg_y = c_y + 134
-    parts.append(svg_text(406, leg_y + 8, "Less", size=10.0, color=theme["text_muted"], anchor="end"))
-    for lvl in range(5):
-        lx = 413 + lvl * 12
-        parts.append(
-            f'  <rect x="{lx}" y="{leg_y}" width="9" height="9" rx="2" fill="{theme["heatmap"][lvl]}" />'
-        )
-    parts.append(svg_text(476, leg_y + 8, "More", size=10.0, color=theme["text_muted"]))
-
-    # 2. Top Languages card (x=524..776, y=44..204)
-    lx, lw = 524, 252
-    parts.append(
-        f'  <rect x="{lx}" y="{c_y}" width="{lw}" height="{c_h}" rx="10" '
-        f'fill="{theme["card_bg"]}" stroke="{theme["card_border"]}" stroke-width="1" />'
-    )
-    parts.append(svg_text(lx + 18, c_y + 28, stats["top_languages_title"], size=13.8, color=theme["text_primary"], weight="700"))
-
-    donut_cx = lx + 64
-    donut_cy = c_y + 94
-    radius = 32.0
-    circumference = 2.0 * math.pi * radius
-    parts.append(
-        f'  <circle cx="{donut_cx}" cy="{donut_cy}" r="{radius}" fill="transparent" '
-        f'stroke="{theme["donut_track"]}" stroke-width="11" />'
-    )
-
-    langs = stats["languages"]
-    total_pct = sum(float(item["percentage"]) for item in langs) or 100.0
-    offset = 0.0
-    color_key = "color_dark" if theme_name == "dark" else "color_light"
-    for item in langs:
-        share = float(item["percentage"]) / total_pct
-        arc_len = max(0.0, share * circumference - 2.4)
-        color = item.get(color_key, "#38bdf8")
-        parts.append(
-            f'  <circle cx="{donut_cx}" cy="{donut_cy}" r="{radius}" fill="transparent" '
-            f'stroke="{color}" stroke-width="11" '
-            f'stroke-dasharray="{arc_len:.2f} {circumference - arc_len:.2f}" '
-            f'stroke-dashoffset="{-offset:.2f}" '
-            f'transform="rotate(-90 {donut_cx} {donut_cy})" />'
-        )
-        offset += share * circumference
-
-    primary = langs[0]
-    parts.append(svg_text(donut_cx, donut_cy + 2, f'{primary["percentage"]:.1f}%', size=12.0, color=theme["text_primary"], weight="700", anchor="middle"))
-    parts.append(svg_text(donut_cx, donut_cy + 14, primary["name"], size=9.2, color=theme["text_muted"], anchor="middle"))
-
-    for idx, item in enumerate(langs):
-        iy = c_y + 72 + idx * 24
-        color = item.get(color_key, "#38bdf8")
-        parts.append(f'  <circle cx="{lx + 124}" cy="{iy - 4}" r="4" fill="{color}" />')
-        parts.append(svg_text(lx + 135, iy, item["name"], size=12.0, color=theme["text_secondary"]))
-        parts.append(svg_text(lx + lw - 16, iy, f'{item["percentage"]:.1f}%', size=11.8, color=theme["text_muted"], anchor="end"))
-
-    # 3. Quote + Mountain Silhouette (x=792..960, y=44..204)
-    qx = 878
-    parts.append(
-        f'  <path d="M792 204 L836 164 L868 184 L908 148 L938 178 L950 166 L960 178 L960 204 Z" fill="{theme["mountain_back"]}" opacity="0.8" />'
-    )
-    parts.append(
-        f'  <path d="M824 204 L870 166 L902 188 L938 158 L960 182 L960 204 Z" fill="{theme["mountain_front"]}" opacity="0.9" />'
-    )
-    q_lines = quote["lines"]
-    for idx, line in enumerate(q_lines):
-        ly = c_y + 52 + idx * 20
-        is_last = idx == len(q_lines) - 1
-        x_pos = qx - 10 if is_last else qx
-        parts.append(svg_text(x_pos, ly, line, size=13.5, color=theme["text_secondary"], weight="500", anchor="middle", italic=True))
-        if is_last:
-            rocket_x = x_pos + est_width(line, 13.5) / 2 + 4
-            parts.append(draw_icon("rocket", rocket_x, ly - 13, 15, theme))
-
-    return svg_doc(width, height, "\n".join(parts), title="GitHub Stats & Top Languages")
-
-
 def main() -> None:
     """Generate Light and Dark SVG assets from data/profile.json."""
     cfg = json.loads(DATA_PATH.read_text(encoding="utf-8"))
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
     generators = {
-        "about-me": lambda name, theme: render_about_me(cfg, theme),
-        "core-expertise": lambda name, theme: render_core_expertise(cfg, theme),
-        "experience-projects": lambda name, theme: render_experience_projects(cfg, theme),
-        "tech-exploring": lambda name, theme: render_tech_exploring(cfg, theme),
-        "github-stats": lambda name, theme: render_github_stats(cfg, name, theme),
+        "about-me": lambda theme: render_about_me(cfg, theme),
+        "core-expertise": lambda theme: render_core_expertise(cfg, theme),
+        "experience-projects": lambda theme: render_experience_projects(cfg, theme),
+        "tech-exploring": lambda theme: render_tech_exploring(cfg, theme),
     }
 
     for section_name, builder in generators.items():
         for theme_name, theme_tokens in THEMES.items():
             out_path = OUT_DIR / f"{section_name}-{theme_name}.svg"
-            out_path.write_text(builder(theme_name, theme_tokens), encoding="utf-8")
+            out_path.write_text(builder(theme_tokens), encoding="utf-8")
             print(f"Generated {out_path.relative_to(ROOT_DIR)}")
 
 

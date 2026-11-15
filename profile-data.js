@@ -174,18 +174,13 @@ window.PROFILE_DATA = {
     items: [
       {
         role: "FPTS – AI / MLOps Engineer",
-        period: "Jul 2025 – Present",
+        period: "Jul 2026 – Present",
         summary: "ML model deployment, feature engineering, data platform",
       },
       {
-        role: "Data Impact – AI Engineer Intern",
-        period: "Jan 2025 – Jun 2025",
-        summary: "RAG chatbot, LLM fine-tuning",
-      },
-      {
-        role: "Consortio Vietnam Technologies – ML Engineer",
-        period: "Jul 2024 – Jan 2025",
-        summary: "Spam phone detection, XGBoost",
+        role: "React Plus – AI Engineer",
+        period: "Feb 2025 – Jun 2026",
+        summary: "RAG, Multi-Agent Systems",
       },
     ],
   },

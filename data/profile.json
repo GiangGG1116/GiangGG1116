@@ -1,12 +1,6 @@
 {
   "username": "GiangGG1116",
   "repositories_url": "https://github.com/GiangGG1116?tab=repositories",
-  "links": {
-    "website": "https://giangg1.github.io",
-    "linkedin": "https://www.linkedin.com/in/gianggg1116",
-    "linkedin_label": "linkedin.com/in/gianggg1116",
-    "email": "gianggg1116@gmail.com"
-  },
   "about": {
     "title": "About Me",
     "bio": "I'm an AI Engineer with a background in Mathematics and Informatics, interested in building scalable and production-ready AI systems.",
@@ -79,18 +73,13 @@
     "items": [
       {
         "role": "FPTS – AI / MLOps Engineer",
-        "period": "Jul 2025 – Present",
+        "period": "Jul 2026 – Present",
         "summary": "ML model deployment, feature engineering, data platform"
       },
       {
-        "role": "Data Impact – AI Engineer Intern",
-        "period": "Jan 2025 – Jun 2025",
-        "summary": "RAG chatbot, LLM fine-tuning"
-      },
-      {
-        "role": "Consortio Vietnam Technologies – ML Engineer",
-        "period": "Jul 2024 – Jan 2025",
-        "summary": "Spam phone detection, XGBoost"
+        "role": "React Plus – AI Engineer",
+        "period": "Feb 2025 – Jun 2026",
+        "summary": "RAG, Multi-Agent Systems"
       }
     ]
   },
@@ -154,25 +143,6 @@
       "Agentic AI & Multi-Agent",
       "MLOps Architecture",
       "Go & Rust"
-    ]
-  },
-  "stats": {
-    "title": "GitHub Stats",
-    "total_contributions": 233,
-    "period_label": "in the last year",
-    "months": ["Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov"],
-    "top_languages_title": "Top Languages",
-    "languages": [
-      { "name": "Python", "percentage": 54.3, "color_dark": "#facc15", "color_light": "#eab308" },
-      { "name": "Go", "percentage": 14.2, "color_dark": "#38bdf8", "color_light": "#0284c7" },
-      { "name": "Other", "percentage": 31.5, "color_dark": "#475569", "color_light": "#94a3b8" }
-    ]
-  },
-  "quote": {
-    "lines": [
-      "“Building AI systems",
-      "that work beyond",
-      "the notebook.”"
     ]
   }
 }
