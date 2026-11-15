@@ -1,0 +1,179 @@
+{
+  "username": "GiangGG1116",
+  "repositories_url": "https://github.com/GiangGG1116?tab=repositories",
+  "links": {
+    "website": "https://giangg1.github.io",
+    "linkedin": "https://www.linkedin.com/in/gianggg1116",
+    "linkedin_label": "linkedin.com/in/gianggg1116",
+    "email": "gianggg1116@gmail.com"
+  },
+  "about": {
+    "title": "About Me",
+    "bio": "I'm an AI Engineer with a background in Mathematics and Informatics, interested in building scalable and production-ready AI systems.",
+    "highlights": [
+      {
+        "icon": "graduation",
+        "label": "BSc:",
+        "value": "Mathematics & Informatics – HUST"
+      },
+      {
+        "icon": "graduation",
+        "label": "MSc:",
+        "value": "Mathematics & Informatics – HUST (2026–2028)"
+      },
+      {
+        "icon": "briefcase",
+        "label": "Focus:",
+        "value": "AI Engineering, MLOps, RAG, Agentic AI"
+      },
+      {
+        "icon": "target",
+        "label": "Goal:",
+        "value": "Design and maintain reliable AI systems"
+      }
+    ]
+  },
+  "expertise": {
+    "title": "Core Expertise",
+    "cards": [
+      {
+        "title": "AI & Machine Learning",
+        "icon": "cpu",
+        "items": [
+          "Machine Learning",
+          "Deep Learning",
+          "XGBoost, Model Eval"
+        ]
+      },
+      {
+        "title": "LLM & Agentic AI",
+        "icon": "chat",
+        "items": [
+          "RAG, Hybrid Search",
+          "Multi-Agent Systems",
+          "LLM Fine-tuning"
+        ]
+      },
+      {
+        "title": "MLOps & Infrastructure",
+        "icon": "gear",
+        "items": [
+          "Docker, Kubernetes",
+          "MLflow, Airflow",
+          "KServe, CI/CD"
+        ]
+      },
+      {
+        "title": "Backend & Data Engineering",
+        "icon": "database",
+        "items": [
+          "Python, FastAPI",
+          "SQL, PostgreSQL",
+          "Redis, MinIO / S3"
+        ]
+      }
+    ]
+  },
+  "experience": {
+    "title": "Professional Experience",
+    "items": [
+      {
+        "role": "FPTS – AI / MLOps Engineer",
+        "period": "Jul 2025 – Present",
+        "summary": "ML model deployment, feature engineering, data platform"
+      },
+      {
+        "role": "Data Impact – AI Engineer Intern",
+        "period": "Jan 2025 – Jun 2025",
+        "summary": "RAG chatbot, LLM fine-tuning"
+      },
+      {
+        "role": "Consortio Vietnam Technologies – ML Engineer",
+        "period": "Jul 2024 – Jan 2025",
+        "summary": "Spam phone detection, XGBoost"
+      }
+    ]
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "view_all": "View all →",
+    "items": [
+      {
+        "title": "Vietnamese Legal RAG Platform",
+        "icon": "scales",
+        "description": "RAG system for Vietnamese legal documents",
+        "tags": [
+          { "label": "Python", "dot": true, "color": "#38bdf8" },
+          { "label": "Qwen" },
+          { "label": "RAG" }
+        ]
+      },
+      {
+        "title": "MLOps Platform",
+        "icon": "k8s",
+        "description": "Production ML infrastructure with K8s & Airflow",
+        "tags": [
+          { "label": "Docker", "dot": true, "color": "#38bdf8" },
+          { "label": "K8s" },
+          { "label": "MLflow" }
+        ]
+      },
+      {
+        "title": "vCaller",
+        "icon": "phone",
+        "description": "Spam phone detection with XGBoost",
+        "tags": [
+          { "label": "Python", "dot": true, "color": "#facc15" },
+          { "label": "XGBoost" }
+        ]
+      }
+    ]
+  },
+  "tech_stack": {
+    "title": "Tech Stack",
+    "items": [
+      { "name": "Python", "icon": "python" },
+      { "name": "Go", "icon": "go" },
+      { "name": "Rust", "icon": "rust" },
+      { "name": "PyTorch", "icon": "pytorch" },
+      { "name": "Docker", "icon": "docker" },
+      { "name": "Kubernetes", "icon": "kubernetes" },
+      { "name": "Airflow", "icon": "airflow" },
+      { "name": "MLflow", "icon": "mlflow" },
+      { "name": "KServe", "icon": "kserve" },
+      { "name": "FastAPI", "icon": "fastapi" },
+      { "name": "PostgreSQL", "icon": "postgresql" },
+      { "name": "Qdrant", "icon": "qdrant" },
+      { "name": "MinIO", "icon": "minio" }
+    ]
+  },
+  "exploring": {
+    "title": "Currently Exploring",
+    "items": [
+      "Production LLM Systems",
+      "Agentic AI & Multi-Agent",
+      "MLOps Architecture",
+      "Go & Rust"
+    ]
+  },
+  "stats": {
+    "title": "GitHub Stats",
+    "total_contributions": 233,
+    "period_label": "in the last year",
+    "months": ["Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov"],
+    "top_languages_title": "Top Languages",
+    "languages": [
+      { "name": "Python", "percentage": 54.3, "color_dark": "#facc15", "color_light": "#eab308" },
+      { "name": "Go", "percentage": 14.2, "color_dark": "#38bdf8", "color_light": "#0284c7" },
+      { "name": "Other", "percentage": 31.5, "color_dark": "#475569", "color_light": "#94a3b8" }
+    ]
+  },
+  "quote": {
+    "lines": [
+      "“Building AI systems",
+      "that work beyond",
+      "the notebook.”"
+    ]
+  }
+}
+
